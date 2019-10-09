@@ -1,4 +1,4 @@
-var lowerCaseLetter = [
+var lowerCaseChar = [
     "a",
     "b",
     "c",
@@ -26,7 +26,7 @@ var lowerCaseLetter = [
     "y",
     "z"
 ]
-var upperCaseLetter = [
+var upperCaseChar = [
     "A",
     "B",
     "C",
@@ -107,13 +107,15 @@ var userInputSpecialChar = confirm("Would you like special characters in your pa
 
 var userInputNumberChar = confirm("Would you like lower case characters in your password?");
 
-var childArray //this is the variable for the array of the pw thats been concatinated
+var childArray = [] //this is the variable for the array of the pw thats been concatinated
+
+var passwordArray = []
 
 if (userInputLowerCaseChar) {
     childArray = childArray.concat(lowerCaseChar);
 }
 if (userInputUpperCaseChar) {
-    childArray = childArray.concat(upperCaseLetter);
+    childArray = childArray.concat(upperCaseChar);
 }
 if (userInputNumberChar) {
     childArray = childArray.concat(numberChar);
@@ -122,8 +124,12 @@ if (userInputSpecialChar) {
     childArray = childArray.concat(specialChar);
 }
 
-
+function pwGenerator(){
+    var char = Math.floor(Math.random() * childArray.length)
+    console.log(childArray[char])
+    passwordArray.push(childArray[char])
+}
 
 for (var i = 0; i < pwLength; i++){
-
+    pwGenerator()
 }
