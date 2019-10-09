@@ -95,3 +95,35 @@ var specialChar = [
     "}",
     "~",
 ]
+
+var pwLength = prompt("Please specify how many characters long you want the password to be.");
+pwLength = parseInt(pwLength);
+
+var userInputLowerCaseChar = confirm("Would you like lower case characters in your password?");
+
+var userInputUpperCaseChar = confirm("Would you like upper case characters in your password?");
+
+var userInputSpecialChar = confirm("Would you like special characters in your password?");
+
+var userInputNumberChar = confirm("Would you like lower case characters in your password?");
+
+var childArray //this is the variable for the array of the pw thats been concatinated
+
+if (userInputLowerCaseChar) {
+    childArray = childArray.concat(lowerCaseChar);
+}
+if (userInputUpperCaseChar) {
+    childArray = childArray.concat(upperCaseLetter);
+}
+if (userInputNumberChar) {
+    childArray = childArray.concat(numberChar);
+}
+if (userInputSpecialChar) {
+    childArray = childArray.concat(specialChar);
+}
+
+
+
+for (var i = 0; i < pwLength; i++){
+
+}
