@@ -96,8 +96,17 @@ var specialChar = [
     "~",
 ]
 
-var pwLength = prompt("Please specify how many characters long you want the password to be.");
+var pwLength = prompt("Please specify how many characters long you want the password to be. It must be over 8 characters.");
 pwLength = parseInt(pwLength);
+while (isNaN(pwLength)){
+    var userDummy = confirm("You need to put in a number. I can't make a password some letter characters long.")
+    pwLength = prompt("Please specify how many characters long you want the password to be.");
+}
+
+while (7 > pwLength){
+    var userPwLengthTooShort = confirm("You need to make your password ATLEAST 8 characters long.")
+    pwLength = prompt("Please specify how many characters long you want the password to be.");
+}
 
 var userInputLowerCaseChar = confirm("Would you like lower case characters in your password?"); 
     
@@ -119,7 +128,7 @@ while (userInputLowerCaseChar == false && userInputUpperCaseChar == false && use
     userInputNumberChar = confirm("Would you like number characters in your password?");
 }
 
-var childArray = [] //this is the variable for the array of the pw thats been concatinated
+var childArray = [] //this is the variable for the array of the pw characters pool thats been concatinated
 
 var passwordArray = []
 
