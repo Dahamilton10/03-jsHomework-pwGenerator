@@ -99,13 +99,25 @@ var specialChar = [
 var pwLength = prompt("Please specify how many characters long you want the password to be.");
 pwLength = parseInt(pwLength);
 
-var userInputLowerCaseChar = confirm("Would you like lower case characters in your password?");
-
-var userInputUpperCaseChar = confirm("Would you like upper case characters in your password?");
-
+var userInputLowerCaseChar = confirm("Would you like lower case characters in your password?"); 
+    
+var userInputUpperCaseChar = confirm("Would you like upper case characters in your password?"); 
+    
 var userInputSpecialChar = confirm("Would you like special characters in your password?");
 
-var userInputNumberChar = confirm("Would you like lower case characters in your password?");
+var userInputNumberChar = confirm("Would you like number characters in your password?");
+
+while (userInputLowerCaseChar == false && userInputUpperCaseChar == false && userInputSpecialChar == false && userInputNumberChar == false) {
+    var userDumb = confirm("Hey you need to pick atleast one of these for the password to be generated.")
+
+    userInputLowerCaseChar = confirm("Would you like lower case characters in your password?");
+
+    userInputUpperCaseChar = confirm("Would you like upper case characters in your password?");
+
+    userInputSpecialChar = confirm("Would you like special characters in your password?");
+
+    userInputNumberChar = confirm("Would you like number characters in your password?");
+}
 
 var childArray = [] //this is the variable for the array of the pw thats been concatinated
 
@@ -124,12 +136,13 @@ if (userInputSpecialChar) {
     childArray = childArray.concat(specialChar);
 }
 
-function pwGenerator(){
+function pwGenerator() {
     var char = Math.floor(Math.random() * childArray.length)
-    console.log(childArray[char])
     passwordArray.push(childArray[char])
 }
 
-for (var i = 0; i < pwLength; i++){
+for (var i = 0; i < pwLength; i++) {
     pwGenerator()
 }
+passwordArray = passwordArray.join('');
+document.body.children[2].append(passwordArray);
