@@ -99,6 +99,7 @@ var specialChar = [
 var pwLength = prompt("Please specify how many characters long you want the password to be. It must be over 8 characters.");
 pwLength = parseInt(pwLength);
 while (isNaN(pwLength)){
+    //the isNaN() function just determines whether the value is NaN (not a number) or not as a boolean value. I pulled it from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
     var userDummy = confirm("You need to put in a number. I can't make a password some letter characters long.")
     pwLength = prompt("Please specify how many characters long you want the password to be.");
 }
@@ -147,11 +148,43 @@ if (userInputSpecialChar) {
 
 function pwGenerator() {
     var char = Math.floor(Math.random() * childArray.length)
-    passwordArray.push(childArray[char])
+    passwordArray.push(childArray[char])    
 }
 
 for (var i = 0; i < pwLength; i++) {
     pwGenerator()
 }
+if (userInputLowerCaseChar){
+    var haslowercase = false;
+    for (var i = 0; i < lowerCaseChar; i++)
+        if (passwordArray.includes(lowerCaseChar[i])){
+            haslowercase = true;
+        }
+}
+if (userInputLowerCaseChar){
+    var x = Math.floor(Math.random() * lowerCaseChar.length)
+    passwordArray.pop();
+    passwordArray.unshift(lowerCaseChar[x])
+    console.log(passwordArray)
+}
+if (userInputUpperCaseChar){
+    var x = Math.floor(Math.random() * upperCaseChar.length)
+    passwordArray.pop();
+    passwordArray.unshift(upperCaseChar[x])
+    console.log(passwordArray)
+}
+if (userInputNumberChar){
+    var x = Math.floor(Math.random() * numberChar.length)
+    passwordArray.pop();
+    passwordArray.unshift(numberChar[x])
+    console.log(passwordArray)
+}
+if (userInputSpecialChar){
+    var x = Math.floor(Math.random() * specialChar.length)
+    passwordArray.pop();
+    passwordArray.unshift(specialChar[x])
+    console.log(passwordArray)
+}
 passwordArray = passwordArray.join('');
+// I need to comment this
 document.body.children[2].append(passwordArray);
