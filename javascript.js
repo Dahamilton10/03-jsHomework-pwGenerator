@@ -97,6 +97,7 @@ var specialChar = [
 ]
 
 var generateElement = document.querySelector("#generate");
+var copyElement = document.querySelector("#copy");
 
 generateElement.addEventListener("click", function(){
     var pwLength = prompt("Please specify how many characters long you want the password to be. It must be over 8 characters.");
@@ -191,4 +192,13 @@ generateElement.addEventListener("click", function(){
     passwordArray = passwordArray.join('');
     // I need to comment this
     document.body.children[2].append(passwordArray);
+});
+copyElement.addEventListener("click", function(){
+    // added an event listener to the copy button
+    var copyPassword = document.body.children[2];
+    // made a variable thats just equal to the space where the password gets put
+    copyPassword.select();
+    // selects the password
+    document.execCommand("copy");
+    // the execCommand just lets us change the current editable area. In this case we're just copying that area.
 });
