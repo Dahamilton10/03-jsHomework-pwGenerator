@@ -103,7 +103,7 @@ generateElement.addEventListener("click", function(){
     pwLength = parseInt(pwLength);
     while (isNaN(pwLength)){
         //the isNaN() function just determines whether the value is NaN (not a number) or not as a boolean value. I pulled it from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
-        var userDummy = confirm("You need to put in a number. I can't make a password some letter characters long.")
+        confirm("You need to put in a number. I can't make a password some letter characters long.")
         pwLength = prompt("Please specify how many characters long you want the password to be.");
     }
     
@@ -121,7 +121,7 @@ generateElement.addEventListener("click", function(){
     var userInputNumberChar = confirm("Would you like number characters in your password?");
     
     while (userInputLowerCaseChar == false && userInputUpperCaseChar == false && userInputSpecialChar == false && userInputNumberChar == false) {
-        var userDumb = confirm("Hey you need to pick atleast one of these for the password to be generated.")
+        confirm("Hey you need to pick atleast one of these for the password to be generated.")
     
         userInputLowerCaseChar = confirm("Would you like lower case characters in your password?");
     
