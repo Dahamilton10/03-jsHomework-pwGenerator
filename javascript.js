@@ -96,95 +96,99 @@ var specialChar = [
     "~",
 ]
 
-var pwLength = prompt("Please specify how many characters long you want the password to be. It must be over 8 characters.");
-pwLength = parseInt(pwLength);
-while (isNaN(pwLength)){
-    //the isNaN() function just determines whether the value is NaN (not a number) or not as a boolean value. I pulled it from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
-    var userDummy = confirm("You need to put in a number. I can't make a password some letter characters long.")
-    pwLength = prompt("Please specify how many characters long you want the password to be.");
-}
+var generateElement = document.querySelector("#generate");
 
-while (7 > pwLength){
-    var userPwLengthTooShort = confirm("You need to make your password ATLEAST 8 characters long.")
-    pwLength = prompt("Please specify how many characters long you want the password to be.");
-}
-
-var userInputLowerCaseChar = confirm("Would you like lower case characters in your password?"); 
+generateElement.addEventListener("click", function(){
+    var pwLength = prompt("Please specify how many characters long you want the password to be. It must be over 8 characters.");
+    pwLength = parseInt(pwLength);
+    while (isNaN(pwLength)){
+        //the isNaN() function just determines whether the value is NaN (not a number) or not as a boolean value. I pulled it from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
+        var userDummy = confirm("You need to put in a number. I can't make a password some letter characters long.")
+        pwLength = prompt("Please specify how many characters long you want the password to be.");
+    }
     
-var userInputUpperCaseChar = confirm("Would you like upper case characters in your password?"); 
+    while (7 > pwLength){
+        var userPwLengthTooShort = confirm("You need to make your password ATLEAST 8 characters long.")
+        pwLength = prompt("Please specify how many characters long you want the password to be.");
+    }
     
-var userInputSpecialChar = confirm("Would you like special characters in your password?");
-
-var userInputNumberChar = confirm("Would you like number characters in your password?");
-
-while (userInputLowerCaseChar == false && userInputUpperCaseChar == false && userInputSpecialChar == false && userInputNumberChar == false) {
-    var userDumb = confirm("Hey you need to pick atleast one of these for the password to be generated.")
-
-    userInputLowerCaseChar = confirm("Would you like lower case characters in your password?");
-
-    userInputUpperCaseChar = confirm("Would you like upper case characters in your password?");
-
-    userInputSpecialChar = confirm("Would you like special characters in your password?");
-
-    userInputNumberChar = confirm("Would you like number characters in your password?");
-}
-
-var childArray = [] //this is the variable for the array of the pw characters pool thats been concatinated
-
-var passwordArray = []
-
-if (userInputLowerCaseChar) {
-    childArray = childArray.concat(lowerCaseChar);
-}
-if (userInputUpperCaseChar) {
-    childArray = childArray.concat(upperCaseChar);
-}
-if (userInputNumberChar) {
-    childArray = childArray.concat(numberChar);
-}
-if (userInputSpecialChar) {
-    childArray = childArray.concat(specialChar);
-}
-
-function pwGenerator() {
-    var char = Math.floor(Math.random() * childArray.length)
-    passwordArray.push(childArray[char])    
-}
-
-for (var i = 0; i < pwLength; i++) {
-    pwGenerator()
-}
-if (userInputLowerCaseChar){
-    var haslowercase = false;
-    for (var i = 0; i < lowerCaseChar; i++)
-        if (passwordArray.includes(lowerCaseChar[i])){
-            haslowercase = true;
-        }
-}
-if (userInputLowerCaseChar){
-    var x = Math.floor(Math.random() * lowerCaseChar.length)
-    passwordArray.pop();
-    passwordArray.unshift(lowerCaseChar[x])
-    console.log(passwordArray)
-}
-if (userInputUpperCaseChar){
-    var x = Math.floor(Math.random() * upperCaseChar.length)
-    passwordArray.pop();
-    passwordArray.unshift(upperCaseChar[x])
-    console.log(passwordArray)
-}
-if (userInputNumberChar){
-    var x = Math.floor(Math.random() * numberChar.length)
-    passwordArray.pop();
-    passwordArray.unshift(numberChar[x])
-    console.log(passwordArray)
-}
-if (userInputSpecialChar){
-    var x = Math.floor(Math.random() * specialChar.length)
-    passwordArray.pop();
-    passwordArray.unshift(specialChar[x])
-    console.log(passwordArray)
-}
-passwordArray = passwordArray.join('');
-// I need to comment this
-document.body.children[2].append(passwordArray);
+    var userInputLowerCaseChar = confirm("Would you like lower case characters in your password?"); 
+        
+    var userInputUpperCaseChar = confirm("Would you like upper case characters in your password?"); 
+        
+    var userInputSpecialChar = confirm("Would you like special characters in your password?");
+    
+    var userInputNumberChar = confirm("Would you like number characters in your password?");
+    
+    while (userInputLowerCaseChar == false && userInputUpperCaseChar == false && userInputSpecialChar == false && userInputNumberChar == false) {
+        var userDumb = confirm("Hey you need to pick atleast one of these for the password to be generated.")
+    
+        userInputLowerCaseChar = confirm("Would you like lower case characters in your password?");
+    
+        userInputUpperCaseChar = confirm("Would you like upper case characters in your password?");
+    
+        userInputSpecialChar = confirm("Would you like special characters in your password?");
+    
+        userInputNumberChar = confirm("Would you like number characters in your password?");
+    }
+    
+    var childArray = [] //this is the variable for the array of the pw characters pool thats been concatinated
+    
+    var passwordArray = []
+    
+    if (userInputLowerCaseChar) {
+        childArray = childArray.concat(lowerCaseChar);
+    }
+    if (userInputUpperCaseChar) {
+        childArray = childArray.concat(upperCaseChar);
+    }
+    if (userInputNumberChar) {
+        childArray = childArray.concat(numberChar);
+    }
+    if (userInputSpecialChar) {
+        childArray = childArray.concat(specialChar);
+    }
+    
+    function pwGenerator() {
+        var char = Math.floor(Math.random() * childArray.length)
+        passwordArray.push(childArray[char])    
+    }
+    
+    for (var i = 0; i < pwLength; i++) {
+        pwGenerator()
+    }
+    if (userInputLowerCaseChar){
+        var haslowercase = false;
+        for (var i = 0; i < lowerCaseChar; i++)
+            if (passwordArray.includes(lowerCaseChar[i])){
+                haslowercase = true;
+            }
+    }
+    if (userInputLowerCaseChar){
+        var x = Math.floor(Math.random() * lowerCaseChar.length)
+        passwordArray.pop();
+        passwordArray.unshift(lowerCaseChar[x])
+        console.log(passwordArray)
+    }
+    if (userInputUpperCaseChar){
+        var x = Math.floor(Math.random() * upperCaseChar.length)
+        passwordArray.pop();
+        passwordArray.unshift(upperCaseChar[x])
+        console.log(passwordArray)
+    }
+    if (userInputNumberChar){
+        var x = Math.floor(Math.random() * numberChar.length)
+        passwordArray.pop();
+        passwordArray.unshift(numberChar[x])
+        console.log(passwordArray)
+    }
+    if (userInputSpecialChar){
+        var x = Math.floor(Math.random() * specialChar.length)
+        passwordArray.pop();
+        passwordArray.unshift(specialChar[x])
+        console.log(passwordArray)
+    }
+    passwordArray = passwordArray.join('');
+    // I need to comment this
+    document.body.children[2].append(passwordArray);
+});
