@@ -190,7 +190,7 @@ generateElement.addEventListener("click", function(){
         console.log(passwordArray)
     }
     passwordArray = passwordArray.join('');
-    // I need to comment this
+    // Join will just take the contents of this array and smoosh them all together. You can pass in something to seperate the elements of the array but I've chosen to not have a seperator.
     document.body.children[2].append(passwordArray);
 });
 copyElement.addEventListener("click", function(){
